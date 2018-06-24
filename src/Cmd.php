@@ -40,13 +40,14 @@ class Cmd
             $accessToken = $this->getAccessToken($accessFile, $apiClient);
 
             $apiClient->setAccessToken($accessToken);
+            $this->listFiles($apiClient);
+
+            printf("\nFind you credentials file at: %s\n", $accessFile);
 
         } catch (\Exception $e) {
             printf("%s\n", $e->getMessage());
             exit(1);
         }
-
-        printf("Find you credentials file at: %s\n", $accessFile);
         exit(0);
     }
 
@@ -144,6 +145,41 @@ EOT;
             file_put_contents($accessFile, json_encode($accessToken));
         }
         return $accessToken;
+    }
+
+    /**
+     * List the names and IDs for up to 50 files.
+     *
+     * @param \Google_Client $apiClient
+     */
+    private function listFiles(Google_Client $apiClient)
+    {
+        $service   = new Google_Service_Drive($apiClient);
+        $results   = $service->files->listFiles(
+            [
+                'includeTeamDriveItems' => false,
+                'pageSize'              => 50,
+                'fields'                => 'nextPageToken, files(id, name, createdTime, size)',
+                'spaces'                => 'drive',
+                'q'                     => 'trashed = false AND visibility = \'limited\'',
+            ]
+        );
+
+        if (count($results->getFiles()) == 0) {
+            print "No files found.\n";
+        } else {
+            print "Files:\n";
+            /** @var \Google_Service_Drive_DriveFile $file */
+            foreach ($results->getFiles() as $file) {
+                printf(
+                    "%s (%s) - %s (%s bytes)\n",
+                    $file->getName(),
+                    $file->getId(),
+                    $file->getCreatedTime(),
+                    $file->getSize()
+                );
+            }
+        }
     }
 
     /**

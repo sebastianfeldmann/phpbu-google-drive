@@ -2,6 +2,10 @@
 With this cli script you can create a Google Drive access token
 file that is required by PHPBU to sync your files to Google Drive.
 
+Also it lists the names and IDs of your Google Drive files and directories.
+The ID of the directory where you want to store your backups is needed for 
+your phpbu configuration.
+
 All you need is a Google api client json credential file that you can easily
 generate online in you Google account settings.
 
