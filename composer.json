@@ -1,0 +1,34 @@
+{
+  "name": "phpbu/google-drive-utility",
+  "description": "phpbu Google Drive utility.",
+  "type": "script",
+  "keywords": [
+    "google",
+    "drive",
+    "authentication"
+  ],
+  "homepage": "http://phpbu.de/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sebastian Feldmann",
+      "email": "sebastian@phpbu.de",
+      "role": "lead"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/sebastianfeldmann/phpbu-google-drive/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "phpbu\\GDU\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "google/apiclient":"^2.0"
+  },
+  "bin": [
+    "phpbu-gdu"
+  ]
+}
