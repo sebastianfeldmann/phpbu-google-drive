@@ -15,7 +15,7 @@ There are two ways to install the phpbu Google Drive utility.
 
 ### Composer
 
-    composer require phpbu/google-drive-util
+    composer require phpbu/google-drive-utility
     vendor/bin/phpbu-gdu
     
 ### git
