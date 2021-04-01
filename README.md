@@ -1,17 +1,17 @@
 # PHPBU Google Drive utility
-With this cli script you can create a Google Drive access token
-file that is required by PHPBU to sync your files to Google Drive.
+With this CLI script you can create a Google Drive access token file that is
+required by PHPBU to sync your files to Google Drive.
 
 Also it lists the names and IDs of your Google Drive files and directories.
-The ID of the directory where you want to store your backups is needed for 
-your phpbu configuration.
+The ID of the directory where you want to store your backups is needed for your
+PHPBU configuration.
 
-All you need is a Google api client json credential file that you can easily
-generate online in you Google account settings.
+All you need is a Google API client JSON credential file that you can easily
+generate online in your Google account settings.
 
 ## Installation
 
-There are two ways to install the phpbu Google Drive utility.
+There are two ways to install the PHPBU Google Drive utility.
 
 ### Composer
 
@@ -28,8 +28,8 @@ There are two ways to install the phpbu Google Drive utility.
 
     phpbu-gdu [client_secret.json] [client_access.json]
     
-The first argument is the path to you local client_secret.json that you
-have generated in Google account settings.
+The first argument is the path to your local `client_secret.json` that you have
+generated in your Google account settings.
 If you do not provide the argument it defaults to `./client_secret.json`.
 
 The second argument is the path where the access token should be stored.
